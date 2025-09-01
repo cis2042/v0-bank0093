@@ -79,7 +79,6 @@ export default function Dashboard() {
                   className="text-base"
                 />
                 <Button onClick={handleSearch} disabled={isSearching} className="bg-blue-600 hover:bg-blue-700">
-                <Button onClick={handleSearch} disabled={isSearching} className="bg-red-600 hover:bg-red-700">
                   <Search className="w-4 h-4 mr-2" />
                   {isSearching ? "搜尋中..." : "搜尋"}
                 </Button>
