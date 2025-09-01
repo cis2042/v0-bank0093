@@ -19,11 +19,19 @@ const SearchQueryInitializer = dynamic(
 export default function SearchResultsPage() {
   const [query, setQuery] = useState("持分房屋 貸款成數")
   const [sortBy, setSortBy] = useState("relevance")
+  const [likedItems, setLikedItems] = useState(new Set())
+  const [itemLikes, setItemLikes] = useState({})
+  const [votedItems, setVotedItems] = useState(new Set())
+  const [itemVotes, setItemVotes] = useState({})
+  const [bookmarkedItems, setBookmarkedItems] = useState(new Set())
 
   useEffect(() => {
+  }, [])
+
   const handleQueryChange = (newQuery: string) => {
     setQuery(newQuery)
   }
+
   const handleLike = (itemId: string, currentLikes: number) => {
     const isLiked = likedItems.has(itemId)
     const newLikedItems = new Set(likedItems)
