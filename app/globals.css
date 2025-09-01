@@ -1,0 +1,330 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.98 0.02 200); /* Light sky blue background */
+  --foreground: oklch(0.25 0.05 220); /* Deep ocean blue for text */
+  --card: oklch(1 0 0); /* Pure white cards */
+  --card-foreground: oklch(0.25 0.05 220); /* Deep blue text on cards */
+  --popover: oklch(1 0 0); /* White popover background */
+  --popover-foreground: oklch(0.25 0.05 220); /* Deep blue popover text */
+  --primary: oklch(0.6 0.2 200); /* Bright sky blue */
+  --primary-foreground: oklch(1 0 0); /* White text on primary */
+  --secondary: oklch(0.7 0.15 160); /* Fresh green like vegetation */
+  --secondary-foreground: oklch(1 0 0); /* White text on secondary */
+  --muted: oklch(0.95 0.02 200); /* Very light blue for muted elements */
+  --muted-foreground: oklch(0.45 0.05 220); /* Medium blue-gray for muted text */
+  --accent: oklch(0.75 0.12 180); /* Bright cyan like tropical water */
+  --accent-foreground: oklch(1 0 0); /* White text on accents */
+  --destructive: oklch(0.65 0.2 25); /* Warm orange for errors */
+  --destructive-foreground: oklch(1 0 0); /* White text on destructive */
+  --border: oklch(0.9 0.02 200); /* Light blue borders */
+  --input: oklch(1 0 0); /* White input background */
+  --ring: oklch(0.6 0.2 200 / 0.3); /* Primary color with opacity for focus rings */
+  --chart-1: oklch(0.6 0.2 200); /* Sky blue */
+  --chart-2: oklch(0.7 0.15 160); /* Fresh green */
+  --chart-3: oklch(0.75 0.12 180); /* Cyan */
+  --chart-4: oklch(0.65 0.2 25); /* Orange */
+  --chart-5: oklch(0.8 0.15 60); /* Sunny yellow */
+  --radius: 0.75rem;
+  --sidebar: oklch(0.96 0.02 200); /* Light blue sidebar */
+  --sidebar-foreground: oklch(0.25 0.05 220); /* Deep blue sidebar text */
+  --sidebar-primary: oklch(0.6 0.2 200); /* Sky blue for sidebar actions */
+  --sidebar-primary-foreground: oklch(1 0 0); /* White text on sidebar primary */
+  --sidebar-accent: oklch(0.75 0.12 180); /* Cyan for sidebar accents */
+  --sidebar-accent-foreground: oklch(1 0 0); /* White text on sidebar accents */
+  --sidebar-border: oklch(0.9 0.02 200); /* Light blue sidebar borders */
+  --sidebar-ring: oklch(0.6 0.2 200 / 0.3); /* Primary color with opacity for sidebar focus rings */
+  --font-work-sans: "Work Sans", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+
+  /* Added futuristic glow and glass effect variables */
+  --glow-primary: oklch(0.6 0.2 200 / 0.4);
+  --glow-secondary: oklch(0.75 0.12 180 / 0.3);
+  --glass-bg: oklch(0.08 0.03 210 / 0.1);
+  --glass-border: oklch(0.25 0.1 200 / 0.2);
+}
+
+.dark {
+  --background: oklch(0.15 0.05 220); /* Deep ocean blue */
+  --foreground: oklch(0.95 0.02 200); /* Light blue text */
+  --card: oklch(0.2 0.05 220); /* Dark blue cards */
+  --card-foreground: oklch(0.95 0.02 200); /* Light blue text on cards */
+  --popover: oklch(0.2 0.05 220); /* Dark blue popover */
+  --popover-foreground: oklch(0.95 0.02 200); /* Light blue popover text */
+  --primary: oklch(0.6 0.2 200); /* Bright sky blue */
+  --primary-foreground: oklch(1 0 0); /* White text on primary */
+  --secondary: oklch(0.25 0.05 220); /* Dark blue-gray */
+  --secondary-foreground: oklch(0.95 0.02 200); /* Light blue text */
+  --muted: oklch(0.25 0.05 220); /* Dark blue-gray for muted */
+  --muted-foreground: oklch(0.7 0.02 200); /* Light blue-gray for muted text */
+  --accent: oklch(0.75 0.12 180); /* Bright cyan */
+  --accent-foreground: oklch(1 0 0); /* White text on accents */
+  --destructive: oklch(0.65 0.2 25); /* Warm orange */
+  --destructive-foreground: oklch(1 0 0); /* White text on destructive */
+  --border: oklch(0.25 0.05 220); /* Dark blue borders */
+  --input: oklch(0.25 0.05 220); /* Dark blue input background */
+  --ring: oklch(0.6 0.2 200 / 0.3); /* Primary color with opacity */
+  --sidebar: oklch(0.18 0.05 220); /* Dark blue sidebar */
+  --sidebar-foreground: oklch(0.95 0.02 200); /* Light blue sidebar text */
+  --sidebar-primary: oklch(0.6 0.2 200); /* Sky blue */
+  --sidebar-primary-foreground: oklch(1 0 0); /* White text */
+  --sidebar-accent: oklch(0.75 0.12 180); /* Cyan */
+  --sidebar-accent-foreground: oklch(1 0 0); /* White text */
+  --sidebar-border: oklch(0.25 0.05 220); /* Dark blue borders */
+  --sidebar-ring: oklch(0.6 0.2 200 / 0.3); /* Primary color with opacity */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-open-sans);
+    /* Added subtle gradient background for outdoor sky effect */
+    background: linear-gradient(135deg, oklch(0.98 0.02 200) 0%, oklch(0.96 0.03 190) 50%, oklch(0.94 0.04 180) 100%);
+    min-height: 100vh;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-work-sans);
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+  }
+
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Only animate if text is longer than container */
+  .marquee-container:not(.overflow) .marquee-content {
+    animation: none;
+  }
+}
+
+/* Added futuristic animations and effects */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--glow-primary);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--glow-primary), 0 0 60px var(--glow-secondary);
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes hologram-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes wave-flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Futuristic utility classes */
+.glass-morphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px oklch(0.05 0.02 220 / 0.3), inset 0 1px 0 oklch(0.25 0.1 200 / 0.2);
+}
+
+.neon-glow {
+  box-shadow: 0 0 10px var(--glow-primary), 0 0 20px var(--glow-primary), 0 0 40px var(--glow-primary);
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.hologram {
+  animation: hologram-flicker 2s ease-in-out infinite;
+}
+
+.data-stream::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: data-flow 3s linear infinite;
+}
+
+.animate-gentle-float {
+  animation: gentle-float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, oklch(0.75 0.12 180 / 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.glass-effect {
+  background: oklch(1 0 0 / 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.9 0.02 200 / 0.5);
+}
+
+.water-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.water-ripple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, oklch(0.75 0.12 180 / 0.1), transparent);
+  animation: wave-flow 3s infinite;
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--glass-bg);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--glow-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--glow-secondary);
+}
