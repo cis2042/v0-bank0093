@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
-import SidebarNav from "@/components/sidebar-nav"
-import TopHeader from "@/components/top-header"
-import SystemStatusBanner from "@/components/system-status-banner"
+import { SidebarNav } from "@/components/sidebar-nav"
+import { TopHeader } from "@/components/top-header"
+import { SystemStatusBanner } from "@/components/system-status-banner"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
