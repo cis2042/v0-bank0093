@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useSearchParams } from "next/navigation"
+import dynamic from "next/dynamic"
 import { SidebarNav } from "@/components/sidebar-nav"
 import { TopHeader } from "@/components/top-header"
 import { SystemStatusBanner } from "@/components/system-status-banner"
@@ -11,24 +11,19 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { BookOpen, Users, Eye, ThumbsUp, ArrowRight, Filter, Star, MessageSquare } from "lucide-react"
 
+const SearchQueryInitializer = dynamic(
+  () => import("@/components/search-query-initializer").then(mod => ({ default: mod.SearchQueryInitializer })),
+  { ssr: false }
+)
+
 export default function SearchResultsPage() {
-  const searchParams = useSearchParams()
   const [query, setQuery] = useState("持分房屋 貸款成數")
   const [sortBy, setSortBy] = useState("relevance")
 
   useEffect(() => {
-    const searchQuery = searchParams.get("q")
-    if (searchQuery) {
-      setQuery(searchQuery)
-    }
-  }, [])
-
-  const [likedItems, setLikedItems] = useState<Set<string>>(new Set())
-  const [votedItems, setVotedItems] = useState<Set<string>>(new Set())
-  const [bookmarkedItems, setBookmarkedItems] = useState<Set<string>>(new Set())
-  const [itemLikes, setItemLikes] = useState<Record<string, number>>({})
-  const [itemVotes, setItemVotes] = useState<Record<string, number>>({})
-
+  const handleQueryChange = (newQuery: string) => {
+    setQuery(newQuery)
+  }
   const handleLike = (itemId: string, currentLikes: number) => {
     const isLiked = likedItems.has(itemId)
     const newLikedItems = new Set(likedItems)
@@ -158,6 +153,7 @@ export default function SearchResultsPage() {
 
   return (
     <div className="flex h-screen bg-background">
+      <SearchQueryInitializer onQueryChange={handleQueryChange} />
       <SidebarNav />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopHeader />
