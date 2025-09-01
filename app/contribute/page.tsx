@@ -1,16 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { Tabs, TabsContent } from "your-tabs-component-library" // Import Tabs and TabsContent
-import { Button } from "your-button-component-library" // Import Button
-import { Card, CardContent } from "your-card-component-library" // Import Card and CardContent
-import { ThumbsUp } from "your-icon-component-library" // Import ThumbsUp icon
+import { Tabs, TabsContent } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { ThumbsUp } from "lucide-react"
 
 const recentContributions = [
   { id: "1", likes: 10 },
   { id: "2", likes: 20 },
   // ... more contributions ...
-] // Declare recentContributions variable
+]
 
 export default function ContributePage() {
   const [likedContributions, setLikedContributions] = useState<Set<string>>(new Set())

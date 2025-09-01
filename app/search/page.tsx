@@ -2,16 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
-import SidebarNav from "@/components/SidebarNav"
-import TopHeader from "@/components/TopHeader"
-import SystemStatusBanner from "@/components/SystemStatusBanner"
-import Card from "@/components/Card"
-import CardContent from "@/components/CardContent"
-import CardHeader from "@/components/CardHeader"
-import CardTitle from "@/components/CardTitle"
-import Button from "@/components/Button"
-import Badge from "@/components/Badge"
-import Separator from "@/components/Separator"
+import SidebarNav from "@/components/sidebar-nav"
+import TopHeader from "@/components/top-header"
+import SystemStatusBanner from "@/components/system-status-banner"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
 import { BookOpen, Users, Eye, ThumbsUp, ArrowRight, Filter, Star, MessageSquare } from "lucide-react"
 
 export default function SearchResultsPage() {
