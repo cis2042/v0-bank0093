@@ -15,13 +15,15 @@ import Separator from "@/components/Separator"
 import { BookOpen, Users, Eye, ThumbsUp, ArrowRight, Filter, Star, MessageSquare } from "lucide-react"
 
 export default function SearchResultsPage() {
-  const [isMounted, setIsMounted] = useState(false)
   const searchParams = useSearchParams()
-  const query = isMounted ? (searchParams.get("q") || "持分房屋 貸款成數") : "持分房屋 貸款成數"
+  const [query, setQuery] = useState("持分房屋 貸款成數")
   const [sortBy, setSortBy] = useState("relevance")
 
   useEffect(() => {
-    setIsMounted(true)
+    const searchQuery = searchParams.get("q")
+    if (searchQuery) {
+      setQuery(searchQuery)
+    }
   }, [])
 
   const [likedItems, setLikedItems] = useState<Set<string>>(new Set())
