@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import SidebarNav from "@/components/SidebarNav"
 import TopHeader from "@/components/TopHeader"
@@ -15,9 +15,14 @@ import Separator from "@/components/Separator"
 import { BookOpen, Users, Eye, ThumbsUp, ArrowRight, Filter, Star, MessageSquare } from "lucide-react"
 
 export default function SearchResultsPage() {
+  const [isMounted, setIsMounted] = useState(false)
   const searchParams = useSearchParams()
-  const query = searchParams.get("q") || "持分房屋 貸款成數"
+  const query = isMounted ? (searchParams.get("q") || "持分房屋 貸款成數") : "持分房屋 貸款成數"
   const [sortBy, setSortBy] = useState("relevance")
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const [likedItems, setLikedItems] = useState<Set<string>>(new Set())
   const [votedItems, setVotedItems] = useState<Set<string>>(new Set())
